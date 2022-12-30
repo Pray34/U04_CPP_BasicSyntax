@@ -17,7 +17,7 @@ protected:
 
 public:	
 
-private:
+protected:
 	UPROPERTY(VisibleDefaultsOnly)
 		class UStaticMeshComponent* Mesh;
 };

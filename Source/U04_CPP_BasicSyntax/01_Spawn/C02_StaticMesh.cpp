@@ -4,8 +4,13 @@
 AC02_StaticMesh::AC02_StaticMesh()
 {
 	//PrimaryActorTick.bCanEverTick = true; //Tick을 사용하려면 반드시 필요
-	CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
+	Mesh = CreateDefaultSubobject<UStaticMeshComponent>("Mesh");
 	RootComponent = Mesh;
+
+	ConstructorHelpers::FObjectFinder<UStaticMesh> meshAsset(TEXT("/Game/Meshes/SM_Cube"));
+
+	if (meshAsset.Succeeded())
+		Mesh->SetStaticMesh(meshAsset.Object);
 }
 
 void AC02_StaticMesh::BeginPlay()
