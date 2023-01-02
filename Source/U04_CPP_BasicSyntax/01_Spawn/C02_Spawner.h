@@ -17,13 +17,14 @@ protected:
 
 private:
 	UPROPERTY(EditDefaultsOnly)
-		UClass* ClassRef;
+		UClass* ClassRef; //UClass : 언리얼의 모든 class를 가져옴
 
 	UPROPERTY(EditDefaultsOnly)
 		TSubclassOf<class AC02_StaticMesh> TsubclassRef;
+	//TSubclassOf : 특정 클래스를 가져옴 // <> 안에다 클래스 정의
 
 	UPROPERTY(EditDefaultsOnly)
-		TSubclassOf<class AC02_StaticMesh> SpawnClasses[4];
+		TSubclassOf<class AC02_StaticMesh> SpawnClasses[4]; //멤버변수는 대문자로 시작
 
 private:
 	class AC02_StaticMesh* Meshes[4];

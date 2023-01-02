@@ -12,10 +12,13 @@ void AC02_Spawner::BeginPlay()
 	
 	for (int32 i = 0; i < 4; i++)
 	{
-		FTransform transform;
-		FVector location = FVector(0, i * 200, 50);
+		FTransform transform; //지역변수는 소문자로 시작
+		//FVector location = FVector(0, i * 200, 50);
 
 		Meshes[i] = GetWorld()->SpawnActor<AC02_StaticMesh>(SpawnClasses[i], transform);
-		Meshes[i]->SetActorLocation(location);
+
+		FVector worldLocation =  GetActorLocation();
+
+		Meshes[i]->SetActorLocation(FVector(worldLocation.X, worldLocation.Y + i * 200, worldLocation.Z + 50));
 	}
 }
