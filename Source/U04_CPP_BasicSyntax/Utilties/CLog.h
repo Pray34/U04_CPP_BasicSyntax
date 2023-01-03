@@ -2,6 +2,8 @@
 
 #include "CoreMinimal.h"
 
+#define PrintLine() {CLog::Log(__FUNCTION__, __LINE__);}
+
 class U04_CPP_BASICSYNTAX_API CLog
 {
 public:
@@ -11,5 +13,13 @@ public:
 	static void Print(const FVector& InValue, int32 InKey = -1, float InDuration = 10.0f, FColor InColor = FColor::Orange);
 	static void Print(const FRotator& InValue, int32 InKey = -1, float InDuration = 10.0f, FColor InColor = FColor::Orange);
 
+	static void Log(int32 InValue);
+	static void Log(float InValue);
+	static void Log(const FString& InValue);
+	static void Log(const FVector& InValue);
+	static void Log(const FRotator& InValue);
+	static void Log(const UObject* InValue); //Null Check ¿ëµµ
+	static void Log(const FString& InFuncName, int32 InLineNumber);
+	
 
 };

@@ -16,8 +16,8 @@ void AC01_Property::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	/*GLog->Log("Hello World 1");
-	UE_LOG(LogTemp, Error, TEXT("%s"), L"Hello World 2");*/
+	//GLog->Log("Hello World 1");
+	//UE_LOG(LogTemp, Error, TEXT("%s"), L"Hello World 2");
 
 	if (BVisible == false)return;
 
