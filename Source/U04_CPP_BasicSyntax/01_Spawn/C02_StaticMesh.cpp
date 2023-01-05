@@ -28,7 +28,7 @@ void AC02_StaticMesh::BeginPlay()
 	UMaterialInstanceConstant* material;
 	material = Cast<UMaterialInstanceConstant>(obj);
 	//obj : 코드가 길어서 변수생성
-	//Cast<> : 언리얼 전용 dynamic_cast * 포인터를 붙이지 않는다
+	//Cast<> : 언리얼 전용 dynamic_cast (* 포인터를 붙이지 않는다)
 
 	if (material == nullptr) return; //nullptr 반드시 체크
 
