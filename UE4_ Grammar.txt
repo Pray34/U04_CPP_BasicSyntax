@@ -1,0 +1,30 @@
+UPROPERTY
+- Edit : 편집가능
+- Visible : 편집불가능
+- Instance : world에서만
+- Defaults : class에서만
+- Anywhere : world, class 둘다
+- Blueprint : private에서 불가능 / 블루프틴트에서 노드로 사용가능
+- ReadOnly : Get
+- ReadWrite : Get,Set
+
+멤버변수는 대문자로 시작
+지역변수는 소문자로 시작
+
+- UClass : 언리얼의 모든 class 참조
+- TSubclassof : 특정 class 참조
+
+- FObjectFinder : 생성자에서만 사용가능한 에셋을 불러오는 함수
+- StaticLoadObject : 생성자가 아닌곳에서 에셋을 불러오는 함수
+
+!! : not null
+Cast<> : 언리얼전용 dynamic_cast / *를 붙이지 않는다 (자동으로 붙여준다)
+
+Delegate : 함수 1개만 저장될수있다
+Multicast : 함수가 n개 저장될수있다
+Event(Sparse) : 특정 클래스만 저장될수있다
+DynamicEvent : 블루프린트에서 사용할수있다
+
+Delegate 변수는 일반적으로 public에다 만든다 (어디서든 사용할수 있게끔)
+Excute함수는 Delegate만
+Broadcast함수는 그외전부
