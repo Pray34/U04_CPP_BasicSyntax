@@ -12,19 +12,30 @@ UPROPERTY
 지역변수는 소문자로 시작
 
 - UClass : 언리얼의 모든 class 참조
-- TSubclassof : 특정 class 참조
+- TSubclassof<> : 특정 class 참조
 
 - FObjectFinder : 생성자에서만 사용가능한 에셋을 불러오는 함수
 - StaticLoadObject : 생성자가 아닌곳에서 에셋을 불러오는 함수
 
 !! : not null
-Cast<> : 언리얼전용 dynamic_cast / *를 붙이지 않는다 (자동으로 붙여준다)
+Cast<> : 언리얼전용 dynamic_cast  *를 붙이지 않는다 (자동으로 붙여준다)
 
-Delegate : 함수 1개만 저장될수있다
-Multicast : 함수가 n개 저장될수있다
-Event(Sparse) : 특정 클래스만 저장될수있다
-DynamicEvent : 블루프린트에서 사용할수있다
+Delegate : 함수를 저장하는 변수
+- Delegate : 함수 1개만 저장될수있다
+- Multicast : 함수가 n개 저장될수있다
+ㄴ Event(Sparse) : 특정 클래스만 저장될수있다
+ㄴ Dynamic : 블루프린트에서 사용할수있다
 
 Delegate 변수는 일반적으로 public에다 만든다 (어디서든 사용할수 있게끔)
-Excute함수는 Delegate만
-Broadcast함수는 그외전부
+- Excute() : Delegate (single)
+- Broadcast() : 그외전부
+
+모든 클래스의 래퍼런스 return 방법 : T::StaticClass()
+WorldContextObject : GetWorld()
+
+- Bind할때 주의
+- BindUFuntion : UFUNCTION 옵션을 꼭붙여야함
+
+
+매크로도 일단 세미콜론을 붙여준다
+Component의 월드위치 : GetComponentToWorld()
