@@ -23,8 +23,8 @@ Cast<> : 언리얼전용 dynamic_cast  *를 붙이지 않는다 (자동으로 �
 Delegate : 함수를 저장하는 변수
 - Delegate : 함수 1개만 저장될수있다
 - Multicast : 함수가 n개 저장될수있다
-ㄴ Event(Sparse) : 특정 클래스만 저장될수있다
-ㄴ Dynamic : 블루프린트에서 사용할수있다
+ㄴ Event : 특정 클래스에서만 생성/호출 할수있다
+ㄴ DynamicEvent : 블루프린트에서도 사용할수있다
 
 Delegate 변수는 일반적으로 public에다 만든다 (어디서든 사용할수 있게끔)
 - Excute() : Delegate (single)
@@ -36,6 +36,10 @@ WorldContextObject : GetWorld()
 - Bind할때 주의
 - BindUFuntion : UFUNCTION 옵션을 꼭붙여야함
 
-
 매크로도 일단 세미콜론을 붙여준다
+
 Component의 월드위치 : GetComponentToWorld()
+
+BlueprintOverride Event
+- BP Implementable : 몸체 구현을 Blueprint에서만 가능 / C++에서 불가능
+- BP Native : 몸체 구현을 C++에서 가능 / 하지만 Blueprint에서 재정의도 가능
