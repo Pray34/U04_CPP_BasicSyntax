@@ -22,4 +22,7 @@ private:
 protected:
 	UFUNCTION(BlueprintImplementableEvent) //B.I Event가 붙은 함수들은 cpp에 몸체를 구현하면 안된다
 		void SetBodyColor();
+
+	UFUNCTION(BlueprintNativeEvent)
+		void ResetBodyColor();
 };

@@ -5,6 +5,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Global.h"
+#include "Materials/MaterialInstanceConstant.h"
 
 ACPlayer::ACPlayer()
 {
@@ -46,6 +47,23 @@ void ACPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	//[ Create DynamicInstance ]
+	//Get Material Instance
+	UObject* obj;
+	obj = StaticLoadObject(UMaterialInstanceConstant::StaticClass(), nullptr, TEXT("MaterialInstanceConstant'/Game/Character/Materials/M_UE4Man_Body_Inst.M_UE4Man_Body_Inst'"));
+	UMaterialInstanceConstant* bodyMaterialAsset = Cast<UMaterialInstanceConstant>(obj);
+	if (!bodyMaterialAsset) return;
+
+	obj = StaticLoadObject(UMaterialInstanceConstant::StaticClass(), nullptr, TEXT("MaterialInstanceConstant'/Game/Character/Materials/M_UE4Man_ChestLogo_Inst.M_UE4Man_ChestLogo_Inst'"));
+	UMaterialInstanceConstant* logoMaterialAsset = Cast<UMaterialInstanceConstant>(obj);
+	if (!logoMaterialAsset) return;
+
+	//Create Dynamic Material
+	BodyMaterialDynamic = UMaterialInstanceDynamic::Create(bodyMaterialAsset, nullptr);
+	LogoMaterialDynamic = UMaterialInstanceDynamic::Create(logoMaterialAsset, nullptr);
+	//Set DynamicMaterial to SkelMesh
+	GetMesh()->SetMaterial(0, BodyMaterialDynamic);
+	GetMesh()->SetMaterial(1, LogoMaterialDynamic);
 }
 
 void ACPlayer::Tick(float DeltaTime)
@@ -69,6 +87,7 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction("Run", EInputEvent::IE_Pressed, this, &ACPlayer::OnRun);
 	PlayerInputComponent->BindAction("Run", EInputEvent::IE_Released, this, &ACPlayer::OffRun);
 }
+
 
 void ACPlayer::OnMoveForward(float InAxis)
 {
@@ -104,4 +123,11 @@ void ACPlayer::OnRun()
 void ACPlayer::OffRun()
 {
 	GetCharacterMovement()->MaxWalkSpeed = 400;
+}
+
+
+void ACPlayer::ChangeBodyColor(FLinearColor InBodyColor, FLinearColor InLogoColor)
+{
+	BodyMaterialDynamic->SetVectorParameterValue("BodyColor", InBodyColor);
+	LogoMaterialDynamic->SetVectorParameterValue("BodyColor", InLogoColor);
 }

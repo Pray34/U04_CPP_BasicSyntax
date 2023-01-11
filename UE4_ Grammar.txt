@@ -7,6 +7,8 @@ UPROPERTY
 - Blueprint : private에서 불가능 / 블루프틴트에서 노드로 사용가능
 - ReadOnly : Get
 - ReadWrite : Get,Set
+- Assignable : 블루프린트에서 바인딩이 가능해진다
+
 
 멤버변수는 대문자로 시작
 지역변수는 소문자로 시작
@@ -21,12 +23,14 @@ UPROPERTY
 Cast<> : 언리얼전용 dynamic_cast  *를 붙이지 않는다 (자동으로 붙여준다)
 
 Delegate : 함수를 저장하는 변수
+Delegate 변수는 일반적으로 public에다 만든다 (어디서든 사용할수 있게끔)
+
 - Delegate : 함수 1개만 저장될수있다
 - Multicast : 함수가 n개 저장될수있다
-ㄴ Event : 특정 클래스에서만 생성/호출 할수있다
-ㄴ DynamicEvent : 블루프린트에서도 사용할수있다
+ㄴ Event : 특정 클래스에서만 생성/호출(Excute) 할수있다
+ㄴ Dynamic : 블루프린트에서도 사용할수있다
+ㄴㄴ Dynamic은 Single, Multicast 둘다 기능이 있다
 
-Delegate 변수는 일반적으로 public에다 만든다 (어디서든 사용할수 있게끔)
 - Excute() : Delegate (single)
 - Broadcast() : 그외전부
 
@@ -43,3 +47,7 @@ Component의 월드위치 : GetComponentToWorld()
 BlueprintOverride Event
 - BP Implementable : 몸체 구현을 Blueprint에서만 가능 / C++에서 불가능
 - BP Native : 몸체 구현을 C++에서 가능 / 하지만 Blueprint에서 재정의도 가능
+ㄴ CPP에서 구현할 때 함수명 뒤에 _Implementation를 붙여야 에러가 나지않는다
+ㄴ virtual을 붙이지 않아도 블루프린트에서 SuperCall을 하면 자동으로 붙는다
+ㄴㄴ SuperCall을 하지않으면 블루프린트에서 재정의한 내용만 실행된다
+
