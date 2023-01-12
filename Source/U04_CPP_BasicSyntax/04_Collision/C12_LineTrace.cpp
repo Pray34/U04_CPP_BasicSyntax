@@ -2,6 +2,7 @@
 #include "Global.h"
 #include "C11_LineTracePoint.h"
 #include "../03_Character/CPlayer.h"
+#include "Components/CapsuleComponent.h"
 
 AC12_LineTrace::AC12_LineTrace()
 {
@@ -52,4 +53,10 @@ void AC12_LineTrace::Ragdoll(AActor* InActor, FLinearColor InColor)
 
 	player->GetMesh()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	player->GetMesh()->SetSimulatePhysics(true);
+
+	player->GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	FVector force = player->GetVelocity().GetSafeNormal() * 1e+5f;
+	player->GetMesh()->AddImpulse(force);
+	player->GetMesh()->GlobalAnimRateScale = 0.0f;
 }

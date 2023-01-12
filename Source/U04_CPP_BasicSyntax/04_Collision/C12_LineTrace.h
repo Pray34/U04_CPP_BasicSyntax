@@ -30,4 +30,5 @@ public:
 private:
 	UFUNCTION()
 		void Ragdoll(class AActor* InActor, FLinearColor InColor);
+	
 };

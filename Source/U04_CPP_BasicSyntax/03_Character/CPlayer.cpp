@@ -86,6 +86,7 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	//액션 매핑
 	PlayerInputComponent->BindAction("Run", EInputEvent::IE_Pressed, this, &ACPlayer::OnRun);
 	PlayerInputComponent->BindAction("Run", EInputEvent::IE_Released, this, &ACPlayer::OffRun);
+	PlayerInputComponent->BindAction("Interact", EInputEvent::IE_Released, this, &ACPlayer::OnInteract);
 }
 
 
@@ -125,6 +126,11 @@ void ACPlayer::OffRun()
 	GetCharacterMovement()->MaxWalkSpeed = 400;
 }
 
+void ACPlayer::OnInteract()
+{
+	if(OnInteractEvent.IsBound())
+		OnInteractEvent.Broadcast();
+}
 
 void ACPlayer::ChangeBodyColor(FLinearColor InBodyColor, FLinearColor InLogoColor)
 {
