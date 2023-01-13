@@ -42,7 +42,7 @@ void AC13_Explosion::OnExplosion(class AActor* OverlappedActor, class AActor* Ot
 		{
 			UStaticMeshComponent* meshCompo = Cast<UStaticMeshComponent>(hitResult.GetActor()->GetRootComponent());
 			if (!!meshCompo)
-				meshCompo->AddRadialImpulse(start, 1000, 10e6 / meshCompo->GetMass(), ERadialImpulseFalloff::RIF_Linear);
+				meshCompo->AddRadialImpulse(start, 1000, 15e5 / meshCompo->GetMass(), ERadialImpulseFalloff::RIF_Linear);
 		}
 	}
 }
