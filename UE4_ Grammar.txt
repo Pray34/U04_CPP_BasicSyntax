@@ -50,3 +50,6 @@ BlueprintOverride Event
 ㄴ CPP에서 구현할 때 함수명 뒤에 _Implementation를 붙여야 에러가 나지않는다
 ㄴ virtual을 붙이지 않아도 블루프린트에서 SuperCall을 하면 자동으로 붙는다
 ㄴㄴ SuperCall을 하지않으면 블루프린트에서 재정의한 내용만 실행된다
+
+SetCollisionProfileName() : collision preset 이름 사용자가 직접 정의
+FMath::IsNearlyEqual : float 끼리 연산할때 사용(근삿값)

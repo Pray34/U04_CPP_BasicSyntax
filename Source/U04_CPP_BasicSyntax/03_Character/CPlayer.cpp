@@ -87,6 +87,7 @@ void ACPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	PlayerInputComponent->BindAction("Run", EInputEvent::IE_Pressed, this, &ACPlayer::OnRun);
 	PlayerInputComponent->BindAction("Run", EInputEvent::IE_Released, this, &ACPlayer::OffRun);
 	PlayerInputComponent->BindAction("Interact", EInputEvent::IE_Released, this, &ACPlayer::OnInteract);
+	PlayerInputComponent->BindAction("Rifle", EInputEvent::IE_Released, this, &ACPlayer::OnRifle);
 }
 
 
@@ -130,6 +131,10 @@ void ACPlayer::OnInteract()
 {
 	if(OnInteractEvent.IsBound())
 		OnInteractEvent.Broadcast();
+}
+
+void ACPlayer::OnRifle()
+{
 }
 
 void ACPlayer::ChangeBodyColor(FLinearColor InBodyColor, FLinearColor InLogoColor)

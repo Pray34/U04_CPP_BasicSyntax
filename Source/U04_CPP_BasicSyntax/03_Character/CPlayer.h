@@ -36,6 +36,7 @@ private:
 	void OnRun();
 	void OffRun();
 	void OnInteract();
+	void OnRifle();
 private:
 	UPROPERTY(VisibleDefaultsOnly)
 		class USpringArmComponent* SpringArm;
