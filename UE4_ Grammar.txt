@@ -53,3 +53,5 @@ BlueprintOverride Event
 
 SetCollisionProfileName() : collision preset 이름 사용자가 직접 정의
 FMath::IsNearlyEqual : float 끼리 연산할때 사용(근삿값)
+
+언리얼에서 Inline함수 구현할땐 FORCEINLINE 매크로를 붙인다

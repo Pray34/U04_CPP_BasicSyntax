@@ -2,17 +2,20 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "IRifle.h"
 #include "CPlayer.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FInteractEvent);
 
 UCLASS()
-class U04_CPP_BASICSYNTAX_API ACPlayer : public ACharacter
+class U04_CPP_BASICSYNTAX_API ACPlayer : public ACharacter, public IIRifle
 {
 	GENERATED_BODY()
 
 public:
 	ACPlayer();
+
+	FORCEINLINE class ACRifle* GetRifle() override { return Rifle; }
 
 protected:
 	virtual void BeginPlay() override;
@@ -50,4 +53,7 @@ private:
 
 public:
 	FInteractEvent OnInteractEvent;
+
+private:
+	class ACRifle* Rifle;
 };

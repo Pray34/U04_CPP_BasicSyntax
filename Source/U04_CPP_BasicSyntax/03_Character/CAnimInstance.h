@@ -14,9 +14,12 @@ public:
 	virtual void NativeUpdateAnimation(float DeltaSeconds) override;
 
 private:
-	class ACPlayer* Player;
+	class ACharacter* OwnerCharacter;
 
 protected: //언리얼에서 Get, Set을 가져오려면 Private이 아닌 Protected를 써야한다
 	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Animation")
 		float Speed;
+
+	UPROPERTY(BlueprintReadOnly, EditDefaultsOnly, Category = "Animation")
+		bool bEquipped;
 };

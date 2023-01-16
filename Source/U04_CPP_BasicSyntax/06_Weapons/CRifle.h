@@ -12,6 +12,13 @@ class U04_CPP_BASICSYNTAX_API ACRifle : public AActor
 public:	
 	ACRifle();
 
+	static ACRifle* Spawn(class UWorld* InWorld, class ACharacter* InOwnerCharacter);
+
+	FORCEINLINE bool IsEquipped() { return bEquipped; }
+	FORCEINLINE bool IsEquipping() { return bEquipping; }
+
+	void Equip();
+	void UnEquip();
 protected:
 	virtual void BeginPlay() override;
 
@@ -25,11 +32,18 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Socket")
 		FName HandSocket = "Hand_Rifle";
 
+	UPROPERTY(EditDefaultsOnly, Category = "Montages")
+		class UAnimMontage* GrabMontage;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Montages")
+		class UAnimMontage* UnGrabMontage;
 private:
 	UPROPERTY(VisibleDefaultsOnly)
 		class USkeletalMeshComponent* Mesh;
 
-	//생성자에서 스켈레톤 메시 생성-> 에셋 세팅
-	//플레이어에게 스폰
+	class ACharacter* OwnerCharacter;
+
+	bool bEquipped; //true : OnRifle
+	bool bEquipping; //true : PlayMontage
 	//소켓에 어타치
 };

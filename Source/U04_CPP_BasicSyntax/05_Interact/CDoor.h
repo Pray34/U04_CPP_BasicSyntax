@@ -59,5 +59,4 @@ private:
 	bool bClosed = true; //open or close
 	bool bOpening; //Tick
 	bool bClosing; //Tick
-
 };

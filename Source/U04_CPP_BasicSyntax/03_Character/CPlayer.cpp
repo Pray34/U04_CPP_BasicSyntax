@@ -6,6 +6,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Global.h"
 #include "Materials/MaterialInstanceConstant.h"
+#include "../06_Weapons/CRifle.h"
 
 ACPlayer::ACPlayer()
 {
@@ -64,6 +65,9 @@ void ACPlayer::BeginPlay()
 	//Set DynamicMaterial to SkelMesh
 	GetMesh()->SetMaterial(0, BodyMaterialDynamic);
 	GetMesh()->SetMaterial(1, LogoMaterialDynamic);
+
+	//Spawn Rifle
+	Rifle = ACRifle::Spawn(GetWorld(), this);
 }
 
 void ACPlayer::Tick(float DeltaTime)
@@ -135,6 +139,13 @@ void ACPlayer::OnInteract()
 
 void ACPlayer::OnRifle()
 {
+	if (Rifle->IsEquipped())
+	{
+		Rifle->UnEquip();
+		return;
+	}
+
+	Rifle->Equip();
 }
 
 void ACPlayer::ChangeBodyColor(FLinearColor InBodyColor, FLinearColor InLogoColor)
