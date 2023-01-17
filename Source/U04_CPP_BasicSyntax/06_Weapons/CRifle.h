@@ -16,9 +16,18 @@ public:
 
 	FORCEINLINE bool IsEquipped() { return bEquipped; }
 	FORCEINLINE bool IsEquipping() { return bEquipping; }
+	FORCEINLINE bool IsAiming() { return bAiming; }
 
 	void Equip();
+	void Begin_Equip();
+	void End_Equip();
+
 	void UnEquip();
+	void Begin_UnEquip();
+	void End_UnEquip();
+
+	void Begin_Aiming();
+	void End_Aiming();
 protected:
 	virtual void BeginPlay() override;
 
@@ -45,5 +54,6 @@ private:
 
 	bool bEquipped; //true : OnRifle
 	bool bEquipping; //true : PlayMontage
-	//소켓에 어타치
+
+	bool bAiming;
 };
